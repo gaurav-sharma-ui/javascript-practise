@@ -31,23 +31,25 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
-const juliaData = [3, 5, 2, 12, 7];
-const kateData = [4, 1, 15, 8, 3];
-const checkDogs = function (juliaData, kateData) {
-  const juliaDataCorrected = juliaData.slice(1, -1);
-  // console.log(juliaDataCorrected);
+// const juliaData = [3, 5, 2, 12, 7];
+// const kateData = [4, 1, 15, 8, 3];
+// const checkDogs = function (juliaData, kateData) {
+//   const juliaDataCorrected = juliaData.slice(1, -1);
+//   // console.log(juliaDataCorrected);
 
-  let finalData = [...juliaDataCorrected, ...kateData];
-  finalData.forEach((data, i) => {
-    if (data >= 3) {
-      console.log(`Dog numBer ${i+1} is an adult, and is ${data} years old`);
-    }else {
-      console.log(`Dog numBer ${i+1} is still a puppy🐶`);
-    }
-  });
-};
+//   let finalData = [...juliaDataCorrected, ...kateData];
+//   finalData.forEach((data, i) => {
+//     if (data >= 3) {
+//       console.log(`Dog numBer ${i+1} is an adult, and is ${data} years old`);
+//     }else {
+//       console.log(`Dog numBer ${i+1} is still a puppy🐶`);
+//     }
+//   });
+// };
 
-checkDogs(juliaData, kateData);
+// checkDogs(juliaData, kateData);
+///////////////////////////////////////
+// Coding Challenge #1
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -127,6 +129,28 @@ const createMovements = function (movements) {
 
 createMovements(account1.movements);
 
+const createUserNames = function (acc) {
+  acc.forEach(function (uname) {
+    uname.userName = uname.owner
+      .toLowerCase()
+      .split(" ")
+      .map((chr) => chr[0])
+      .join("");
+  });
+};
+
+createUserNames(accounts);
+
+const calculateBalance = function(movements){
+  const totalValue = movements.reduce((acc,cur)=> {
+    // console.log(acc,cur);
+   return acc + cur;
+  },0);
+  labelBalance.textContent = `${totalValue} EUR`;
+}
+
+calculateBalance(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -140,3 +164,17 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+const max = movements.reduce((acc, cur) => {
+  console.log(`total - ${acc}`)
+  if (acc > cur) {
+    console.log(`${acc} , ${cur}, from if`);
+    console.log(acc);
+    return acc;
+  }else {
+    console.log(`${acc} , ${cur}, from else`);
+    console.log(cur);
+    return cur;
+  }
+}, movements[0]);
+console.log(max);
